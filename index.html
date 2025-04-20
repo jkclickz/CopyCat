@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CopyCat</title>
+  <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Font -->
+  <style>
+    @font-face {
+      font-family: 'CC Rollete Qatu Vector';
+      src: url('./fonts/RolleteQaku-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .copycat-logo {
+      font-family: 'CC Rollete Qatu Vector', cursive;
+    }
+
+    @keyframes modernZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.4) translateY(20px);
+        filter: blur(4px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05) translateY(0);
+        filter: blur(0px);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .zoom-modern {
+      animation: modernZoom 2s ease-out forwards;
+    }
+
+    .glow {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                   0 0 40px rgba(255, 255, 255, 0.3),
+           
+                   0 0 60px rgba(255, 255, 255, 0.1);
+    }
+    .custom-demo-btn {
+  background: linear-gradient(to bottom, #000000, #ffffff);
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px; /* Full rounded */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  border: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+
+.custom-demo-btn:hover {
+  background: linear-gradient(to bottom, #ffffff, #000000);
+  color: #000000;
+}
+
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col font-sans">
+
+  <!-- Navbar -->
+  <header class="flex justify-between items-center px-8 py-6 text-sm">
+    <h1 class="text-[2.5rem] font-bold italic copycat-logo">CopyCat</h1>
+    <nav class="space-x-16 uppercase tracking-wide hidden md:flex">
+      <a href="#">Services</a>
+      <a href="#">Why Us</a>
+      <a href="#">Who We Are</a>
+      <a href="#">Contact Us</a>
+    </nav>
+    <button class="custom-demo-btn">
+      Get a Free Demo!
+    </button>
+      </header>
+
+  <!-- Main Section -->
+  <main class="flex-grow flex items-center justify-center">
+    <h2 class="text-[10rem] font glow zoom-modern copycat-logo">
+      CopyCat
+    </h2>
+  </main>
+
+  <!-- Footer -->
+  <!-- Footer -->
+<footer class="text-xs px-8 pb-6 flex justify-between items-center">
+  <p>WE CAN DO ANYTHING</p>
+  <div class="space-x-6 text-xl">
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+  </div>
+</footer>
+
+
+</body>
+</html>
