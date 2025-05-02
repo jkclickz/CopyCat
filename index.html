@@ -145,19 +145,23 @@
   <div class="h-48 md:h-72"></div>
 
     <!-- Hero Section -->
-    <main class="flex-grow flex items-center justify-center px-4">
-      <h2 class="text-[6rem] sm:text-[8rem] font-bold glow zoom-modern text-center copycat-logo">CopyCat</h2>
+    <main class="flex-grow flex items-center justify-center px-2">
+      <h2 class="text-[6rem] sm:text-[12rem]  glow zoom-modern text-center copycat-logo">CopyCat</h2>
     </main>
-    <!-- Bottom-left slogan -->
-<p class="fixed bottom-4 left-4 text-xs text-white opacity-80 z-50">WE CAN DO ANYTHING</p>
+   <!-- Fixed Elements ONLY in Hero Section -->
+<div class=" inset-0 pointer-events-none">
+  <!-- Bottom Left Text -->
+  <p class="absolute bottom-4 left-4 text-xs pointer-events-auto">WE CAN DO ANYTHING</p>
 
-<!-- Bottom-right social icons -->
-<div class="fixed bottom-4 right-4 flex space-x-4 text-white text-xl z-50">
-  <a href="#" aria-label="Instagram"><i class="fab fa-instagram hover:text-gray-400"></i></a>
-  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in hover:text-gray-400"></i></a>
-  <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter hover:text-gray-400"></i></a>
-  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f hover:text-gray-400"></i></a>
+  <!-- Bottom Right Icons -->
+  <div class="absolute bottom-4 right-4 flex space-x-6 text-xl pointer-events-auto">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+  </div>
 </div>
+
 
     
   <!-- Section Spacer -->
