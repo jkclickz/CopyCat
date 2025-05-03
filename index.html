@@ -1,92 +1,93 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- AOS CSS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CopyCat</title>
+
+  <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CopyCat</title>
 
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-      @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+  <style>
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .fade-in-up {
       animation: fadeInUp 1.5s ease-out forwards;
     }
-      @font-face {
-        font-family: 'CC Rollete Qatu Vector';
-        src: url('./fonts/RolleteQaku-Regular.ttf') format('truetype');
+
+    @font-face {
+      font-family: 'CC Rollete Qatu Vector';
+      src: url('./fonts/RolleteQaku-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Charlotte';
+      src: url('./fonts/charlotte.ttf') format('truetype');
+    }
+
+    .copycat-logo {
+      font-family: 'CC Rollete Qatu Vector', cursive;
+    }
+    .nav-logo{
+      font-family: 'Charlotte',cursive;
+    }
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(1.3);
+        filter: blur(2px);
       }
-
-      .copycat-logo {
-        font-family: 'CC Rollete Qatu Vector', cursive;
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
       }
+    }
 
-      @keyframes zoomIn {
-        0% {
-          opacity: 0;
-          transform: scale(1.3);
-          filter: blur(2px);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-          filter: blur(0);
-        }
-      }
+    .zoom-modern {
+      animation: zoomIn 2s ease-out forwards;
+    }
 
-      .zoom-modern {
-        animation: zoomIn 2s ease-out forwards;
-      }
+    .glow {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                   0 0 40px rgba(255, 255, 255, 0.3),
+                   0 0 60px rgba(255, 255, 255, 0.1);
+    }
 
-      .glow {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-                    0 0 40px rgba(255, 255, 255, 0.3),
-                    0 0 60px rgba(255, 255, 255, 0.1);
-      }
+    .custom-demo-btn {
+      background: linear-gradient(to bottom, #000000, #ffffff);
+      color: #ffffff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
 
-      .custom-demo-btn {
-        background: linear-gradient(to bottom, #000000, #ffffff);
-        color: #ffffff;
-        padding: 0.5rem 1.25rem;
-        border-radius: 9999px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        border: none;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
-        transition: all 0.3s ease;
-      }
+    .custom-demo-btn:hover {
+      background: linear-gradient(to bottom, #ffffff, #000000);
+      color: #000000;
+    }
+  </style>
+</head>
 
-      .custom-demo-btn:hover {
-        background: linear-gradient(to bottom, #ffffff, #000000);
-        color: #000000;
-      }
-    </style>
-  </head>
+<body class="bg-black text-white min-h-screen flex flex-col font-sans">
 
-  <body class="bg-black text-white min-h-screen flex flex-col font-sans">
-
-    <!-- Header -->
-  <!-- Header with Hamburger -->
-  <header class="flex justify-between items-center px-6 py-4 text-sm relative z-50">
+  <!-- Header -->
+  <header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white">
     <!-- Logo -->
-    <h1 class="text-3xl font-bold italic copycat-logo">CopyCat</h1>
-  
+    <h1 class="text-xl font-bold italic nav-logo">CopyCat</h1>
+
     <!-- Desktop Nav -->
     <nav class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-12 uppercase tracking-wide text-white">
       <div class="relative group">
@@ -96,82 +97,73 @@
           <a href="#" class="block px-4 py-2 hover:bg-gray-800">SERVICE 2</a>
         </div>
       </div>
-      <a href="#why" class="hover:text-gray-300">Why Us</a>
-      <a href="#about" class="hover:text-gray-300">Who We Are</a>
-      <a href="#contact" class="hover:text-gray-300">Contact Us</a>
+      <a href="#work" class="hover:text-gray-300">Our Work</a>
+      <a href="#why" class="hover:text-gray-300">Why us</a>
+      <a href="#about" class="hover:text-gray-300">About Us</a>
+      <a href="#contact" class="hover:text-gray-300">Contact</a>
     </nav>
-    
-    <!-- ✅ Free Demo Button stays far right -->
+
+    <!-- Free Demo Button for Desktop -->
     <button class="hidden md:block ml-6 custom-demo-btn">Get a Free Demo!</button>
-    </nav>
-  
-    <!-- ✅ Hamburger Button for Mobile -->
+
+    <!-- Hamburger Button -->
     <button id="menu-toggle" class="md:hidden text-white text-2xl">
       <i class="fas fa-bars"></i>
     </button>
-  
-    <!-- ✅ Mobile Menu -->
-    <div id="mobile-menu" class="fixed top-0 right-[-100%] h-full w-64 bg-black text-white p-6 space-y-6 transition-all duration-300 ease-in-out md:hidden z-40">
-      <button id="close-menu" class="text-right w-full text-xl text-white mb-4">
-        <i class="fas fa-times"></i>
-      </button>
-      <div>
-        <button id="services-dropdown" class="flex justify-between items-center w-full hover:text-gray-300">
-          Services <i class="fas fa-chevron-down ml-2"></i>
-        </button>
-        <div id="dropdown-items" class="hidden mt-2 pl-4 space-y-2">
-          <a href="#" class="block hover:text-blue-400">Service 1</a>
-          <a href="#" class="block hover:text-blue-400">Service 2</a>
-        </div>
-      </div>
-      <a href="#why" class="block hover:text-blue-400">Why Us</a>
-      <a href="#about" class="block hover:text-blue-400">About</a>
-      <a href="#contact" class="block hover:text-blue-400">Contact</a>
-  
-      <!-- ✅ Free Demo Button (Visible in Mobile Menu) -->
-      <button class="mt-6 custom-demo-btn w-full text-center">Get a Free Demo!</button>
-    </div>
   </header>
-  
 
-    <!-- Right Side Slide-in Mobile Menu -->
-    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 bg-black text-white flex flex-col items-start px-8 py-6 space-y-6 transform translate-x-full transition-transform duration-300 ease-in-out z-40">
-      <a href="#" class="uppercase">Services</a>
-      <a href="#" class="uppercase">Why Us</a>
-      <a href="#" class="uppercase">Who We Are</a>
-      <a href="#" class="uppercase">Contact</a>
-      <button class="custom-demo-btn mt-4">Free Demo</button>
+  <!-- Mobile Menu Slide-in -->
+  <div id="mobile-menu" class="fixed top-0 right-[-100%] h-full w-64 bg-black text-white p-6 space-y-6 transition-all duration-300 ease-in-out md:hidden z-40">
+    <button id="close-menu" class="text-right w-full text-xl text-white mb-4">
+      <i class="fas fa-times"></i>
+    </button>
+    <div>
+      <button id="services-dropdown" class="flex justify-between items-center w-full hover:text-gray-300">
+        Services <i class="fas fa-chevron-down ml-2"></i>
+      </button>
+      <div id="dropdown-items" class="hidden mt-2 pl-4 space-y-2">
+        <a href="#" class="block hover:text-blue-400">Service 1</a>
+        <a href="#" class="block hover:text-blue-400">Service 2</a>
+      </div>
     </div>
+    <a href="#why" class="block hover:text-blue-400">Why Us</a>
+    <a href="#about" class="block hover:text-blue-400">About</a>
+    <a href="#contact" class="block hover:text-blue-400">Contact</a>
+
+    <button class="mt-6 custom-demo-btn w-full text-center">Get a Free Demo!</button>
+  </div>
+
+  <!-- Spacer -->
   <div class="h-48 md:h-72"></div>
 
-    <!-- Hero Section -->
-    <main class="flex-grow flex items-center justify-center px-2">
-      <h2 class="text-[6rem] sm:text-[12rem]  glow zoom-modern text-center copycat-logo">CopyCat</h2>
-    </main>
-   <!-- Fixed Elements ONLY in Hero Section -->
-<div class=" inset-0 pointer-events-none">
-  <!-- Bottom Left Text -->
-  <p class="absolute bottom-4 left-4 text-xs pointer-events-auto">WE CAN DO ANYTHING</p>
+  <!-- Hero Section -->
+  <main class="flex-grow flex items-center justify-center px-2">
+    <h2 class="text-[6rem] sm:text-[12rem] glow zoom-modern text-center copycat-logo">CopyCat</h2>
+  </main>
 
-  <!-- Bottom Right Icons -->
-  <div class="absolute bottom-4 right-4 flex space-x-6 text-xl pointer-events-auto">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-    <a href="#"><i class="fab fa-x-twitter"></i></a>
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
+  <!-- Fixed Elements in Hero -->
+ <div class="absolute bottom-6 left-0 right-0 px-6">
+    <div class="flex flex-col sm:flex-row sm:justify-between items-center">
+      <p class="text-xs sm:text-sm text-center sm:text-left mb-4 sm:mb-0">
+        WE CAN DO ANYTHING
+      </p>
+      <div class="flex space-x-4 text-xl">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
   </div>
-</div>
 
-
-    
   <!-- Section Spacer -->
-  <div class="h-48 md:h-32"></div>
+  <div class="h-48 mb-24 sm:mb-0 md:h-32"></div>
 
-    <!-- About Us Section -->
-    <section
+  <!-- About Section -->
+  <section
     id="about"
     data-aos="fade-up"
-    class="w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-6 md:px-24 py-14 md:py-20 bg-black my-32"
+    class="w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-8 md:px-24 py-14 md:py-20 bg-black my-36"
   >
     <h2 class="text-3xl font-bold mb-6">ABOUT US</h2>
     <p class="text-sm md:text-lg leading-relaxed text-white">
@@ -183,30 +175,29 @@
       Whether it’s crafting immersive animations, developing engaging games, designing seamless web experiences, or producing cinematic VFX—we turn imagination into reality.
     </p>
   </section>
-  
 
+  <!-- JavaScript -->
+  <script>
+    const menu = document.getElementById("mobile-menu");
+    const toggle = document.getElementById("menu-toggle");
+    const closeBtn = document.getElementById("close-menu");
+    const servicesDropdown = document.getElementById("services-dropdown");
+    const dropdownItems = document.getElementById("dropdown-items");
 
-    <!-- JS to Toggle Menu -->
-    <script>
-      const menu = document.getElementById("mobile-menu");
-      const toggle = document.getElementById("menu-toggle");
-      const closeBtn = document.getElementById("close-menu");
-      const servicesDropdown = document.getElementById("services-dropdown");
-      const dropdownItems = document.getElementById("dropdown-items");
-    
-      toggle.onclick = () => {
-        menu.style.right = "0";
-      };
-    
-      closeBtn.onclick = () => {
-        menu.style.right = "-100%";
-      };
-    
-      servicesDropdown.onclick = () => {
-        dropdownItems.classList.toggle("hidden");
-      };
-    </script>
-    <!-- AOS Script -->
+    toggle.onclick = () => {
+      menu.style.right = "0";
+    };
+
+    closeBtn.onclick = () => {
+      menu.style.right = "-100%";
+    };
+
+    servicesDropdown.onclick = () => {
+      dropdownItems.classList.toggle("hidden");
+    };
+  </script>
+
+  <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({
@@ -214,16 +205,5 @@
       once: true
     });
   </script>
-
-    <!-- Footer -->
-    <!-- <footer class="text-center text-xs px-6 pb-4 space-y-4">
-      <p>WE CAN DO ANYTHING</p>
-      <div class="flex justify-center space-x-6 text-xl">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-x-twitter"></i></a>
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-      </div>
-    </footer> -->
-  </body>
-  </html>
+</body>
+</html>
