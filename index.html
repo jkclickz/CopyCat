@@ -15,11 +15,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    body {
-  
-      background: url('img/bg.jpg') center/cover no-repeat;
-    
+   body {
+      background-color: black; /* Black fallback background */
     }
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 600px; /* Adjust height as needed to cover just the top portion */
+      background: url('img/bg.jpg') center top/cover no-repeat;
+      z-index: 0; /* Place it behind content */
+    }
+
 
     @keyframes fadeInUp {
       0% { opacity: 0; transform: translateY(30px); }
@@ -84,15 +92,20 @@
       background: linear-gradient(to bottom, #ffffff, #000000);
       color: #000000;
     }
+    
   </style>
 </head>
 
 <body class="bg-black text-white min-h-screen flex flex-col font-sans">
 
+
   <!-- Header -->
+   
   <header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white">
     <!-- Logo -->
-    <h1 class="text-xl font-bold italic nav-logo">CopyCat</h1>
+<img src="img/topnav.png" alt="CopyCat Logo" class="w-28 z-10 relative" />
+    <div class="header-bg"></div>
+
 
     <!-- Desktop Nav -->
     <nav class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-12 uppercase tracking-wide text-white">
@@ -116,6 +129,7 @@
     <button id="menu-toggle" class="md:hidden text-white text-2xl">
       <i class="fas fa-bars"></i>
     </button>
+    
   </header>
 
   <!-- Mobile Menu Slide-in -->
@@ -169,7 +183,7 @@
   <section
     id="about"
     data-aos="fade-up"
-    class="w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-8 md:px-24 py-14 md:py-20 bg-black my-36"
+    class="w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-8 md:px-24 py-14 md:py-20 bg-black my-56"
   >
     <h2 class="text-3xl font-bold mb-6">ABOUT US</h2>
     <p class="text-sm md:text-lg leading-relaxed text-white">
@@ -213,4 +227,3 @@
   </script>
 </body>
 </html>
-
