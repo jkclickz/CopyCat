@@ -181,6 +181,24 @@ body {
       height: 6rem; /* Adjust spacer for mobile */
     }
   }
+
+
+  @keyframes fadeInSmooth {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .service-slide {
+    animation: fadeInSmooth 0.7s ease forwards;
+    opacity: 0;
+  }
+  
   
   /* Simplified 3D Text Style for Contact Us Section with Black and White Colors */
   .text-3d-simple {

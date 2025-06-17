@@ -31,12 +31,7 @@
       <div class="relative group">
         <button class="hover:text-gray-300">SERVICES</button>
         <div class=" absolute hidden group-hover:block bg-black mt-2 p-2 rounded-lg shadow-lg space-y-2 z-50">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">3D generalist</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">2D generalist</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Game development</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">Web development</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">AI & Automation</a>
-          <a href="#" class="block px-4 py-2 hover:bg-gray-800">VFX & Motion Graphics</a>
+        8
         </div>
       </div>
       <a href="#work" class="hover:text-gray-300">Our Work</a>
@@ -224,7 +219,7 @@
 
 <!-- SERVICES SECTION -->
 <div class="flex-1 relative text-center">
-  <div class="banner px-8 py-4 text-center inline-block" data-aos="fade-up">
+  <div class="banner px-8 py-4 text-center inline-block" data-aos="fade-up" data-aos-delay="300">
     <div class="frame-top" style="width: 12px; height: 12px; background: linear-gradient(to right, #999, #fff, #999);"></div>
     <div class="frame-bottom" style="width: 12px; height: 12px; background: linear-gradient(to right, #999, #fff, #999);"></div>
     <div class="frame-top-right" style="width: 12px; height: 12px; background: linear-gradient(to right, #999, #fff, #999);"></div>
@@ -238,7 +233,11 @@
     <h2 class="text-[28px] font-medium uppercase tracking-[0.2em] shine-text">
       SERVICES
     </h2>
+    
   </div>
+  <p class="text-gray-300 text-sm md:text-base max-w-3xl mx-auto mt-6" data-aos="fade-up" data-aos-delay="300">
+    From creative design to full-stack development and cinematic visuals, we provide end-to-end services that bring your ideas to life.
+  </p>
 </div>
 
 <section class="relative w-full bg-black flex justify-center py-14 px-4">
@@ -249,7 +248,7 @@
         <div class="w-full md:w-1/2 flex justify-center mb-6 md:mb-0" data-aos="fade-right">
           <img src="https://dummyimage.com/300x300/ffffff/000000&text=2D+3D" alt="Service Image" class="max-h-80 md:max-h-96 object-contain" />
         </div>
-        <div class="w-full md:w-1/2 flex items-center" data-aos="fade-left">
+        <div class="w-full md:w-1/2 flex items-center" data-aos="fade-left" data-aos-delay="300">
           <div class="text-left space-y-4">
             <h2 class="text-xl md:text-2xl font-extrabold">2D & 3D Generalist Work</h2>
             <p class="text-sm md:text-base leading-relaxed">
@@ -306,19 +305,18 @@
 
 <script>
   let index = 0;
-  const carousel = document.getElementById('services-carousel');
-  const services = carousel.children.length;
-  const prevBtn = document.getElementById('prevService');
-  const nextBtn = document.getElementById('nextService');
+const carousel = document.getElementById('services-carousel');
+const slides = Array.from(carousel.children);
+const services = slides.length;
 
-  function showSlide(i) {
-    index = (i + services) % services;
-    carousel.style.transform = `translateX(-${index * 100}%)`;
-  }
+function goToSlide(i) {
+  index = i % services;
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+  slides.forEach(slide => slide.classList.remove('service-slide'));
+  slides[index].classList.add('service-slide');
+}
 
-  setInterval(() => {
-    showSlide(index + 1);
-  }, 4000);
+setInterval(() => goToSlide(index + 1), 4000);
 
   prevBtn.addEventListener('click', () => showSlide(index - 1));
   nextBtn.addEventListener('click', () => showSlide(index + 1));
