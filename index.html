@@ -113,7 +113,6 @@
     </p>
   </section>
    
-
 <!-- Why Us Section -->
 <section
   id="why"
@@ -152,11 +151,11 @@
   </div>
 
   <!-- Carousel for Mobile -->
-  <div class="md:hidden relative overflow-hidden">
-    <div id="why-carousel" class="flex transition-transform duration-700 ease-in-out will-change-transform">
+  <div class="md:hidden relative overflow-hidden rounded-3xl" id="why-carousel-container">
+    <div id="why-carousel" class="flex transition-transform duration-700 ease-in-out will-change-transform touch-pan-x">
       <div class="min-w-full why-us-card text-center p-6">
         <h3 class="text-2xl font-bold mt-12 mb-3 text-white">Premium Service</h3>
-        <p class="text-sm text-l text-gray-300 mb-12">
+        <p class="text-sm text-gray-300 mb-12">
           We ensure a smooth, hassle-free experience with real-time project updates, clear communications, and a dedicated support team to bring your vision to life effortlessly.
         </p>
       </div>
@@ -191,8 +190,9 @@
         </p>
       </div>
     </div>
+    
     <!-- Pagination Dots -->
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center gap-2 bg-white/10 px-4 py-1 rounded-md z-10" id="why-dots">
+    <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex justify-center gap-2 bg-white/10 px-4 py-1 rounded-md z-10" id="why-dots">
       <span class="w-3 h-3 rounded-full bg-white opacity-70 cursor-pointer"></span>
       <span class="w-3 h-3 rounded-full bg-white/30 cursor-pointer"></span>
       <span class="w-3 h-3 rounded-full bg-white/30 cursor-pointer"></span>
@@ -206,7 +206,7 @@
   <div class="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
     <div class="why-us-card text-center p-6">
       <h3 class="text-2xl font-bold mt-12 mb-3 text-white">Premium Service</h3>
-      <p class="text-sm text-l text-gray-300 mb-12">
+      <p class="text-sm text-gray-300 mb-12">
         We ensure a smooth, hassle-free experience with real-time project updates, clear communications, and a dedicated support team to bring your vision to life effortlessly.
       </p>
     </div>
@@ -248,6 +248,9 @@
   const whyCarousel = document.getElementById('why-carousel');
   const whyDots = document.querySelectorAll('#why-dots span');
   const totalWhySlides = whyCarousel.children.length;
+  const carouselContainer = document.getElementById('why-carousel-container');
+  let autoSlide;
+  let isPaused = false;
 
   function updateWhyUsCarousel(index) {
     whyCarousel.style.transform = `translateX(-${index * 100}%)`;
@@ -257,13 +260,26 @@
     });
   }
 
-  // Auto Scroll
-  setInterval(() => {
-    whyIndex = (whyIndex + 1) % totalWhySlides;
-    updateWhyUsCarousel(whyIndex);
-  }, 5000);
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      if (!isPaused) {
+        whyIndex = (whyIndex + 1) % totalWhySlides;
+        updateWhyUsCarousel(whyIndex);
+      }
+    }, 5000);
+  }
 
-  // Optional: Manual Dot Navigation
+  function pauseCarousel() {
+    isPaused = true;
+  }
+
+  function resumeCarousel() {
+    isPaused = false;
+  }
+
+  ['touchstart', 'mousedown'].forEach(event => carouselContainer.addEventListener(event, pauseCarousel));
+  ['touchend', 'mouseup', 'mouseleave'].forEach(event => carouselContainer.addEventListener(event, resumeCarousel));
+
   whyDots.forEach((dot, i) => {
     dot.addEventListener('click', () => {
       whyIndex = i;
@@ -271,8 +287,20 @@
     });
   });
 
+  document.getElementById('prevSlide')?.addEventListener('click', () => {
+    whyIndex = (whyIndex - 1 + totalWhySlides) % totalWhySlides;
+    updateWhyUsCarousel(whyIndex);
+  });
+
+  document.getElementById('nextSlide')?.addEventListener('click', () => {
+    whyIndex = (whyIndex + 1) % totalWhySlides;
+    updateWhyUsCarousel(whyIndex);
+  });
+
   updateWhyUsCarousel(whyIndex);
+  startAutoSlide();
 </script>
+
 
 
 
@@ -350,13 +378,13 @@
   </div>
 
   <!-- Arrows visible only on desktop -->
-  <div class="hidden md:block absolute left-2 md:left-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="prevSlide()">
+  <div class=" md:block absolute left-2 md:left-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="prevSlide()">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
     </svg>
   </div>
 
-  <div class="hidden md:block absolute right-2 md:right-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="nextSlide()">
+  <div class=" md:block absolute right-2 md:right-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="nextSlide()">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
     </svg>
