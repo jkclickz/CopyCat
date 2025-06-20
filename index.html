@@ -74,7 +74,7 @@
   <div class="h-48 md:h-72"></div>
 
   <!-- Hero Section -->
-  <main class="flex-grow flex items-center justify-center px-2 sm:mt-[-5rem]">
+  <main class="section flex-grow flex items-center justify-center px-2 sm:mt-[-5rem]">
     <h2 class="text-[6rem] sm:text-[12rem] glow zoom-modern text-center copycat-logo">CopyCat</h2>
   </main>
 
@@ -94,13 +94,13 @@
   </div>
 
   <!-- Section Spacer -->
-  <div class="section-spacer my-36 md:my-16 mb-48 sm:mb-12 md:h-32"></div>
+  <div class="section-spacer my-36 md:my-16 mb-14 sm:mb-12 md:h-32"></div>
 
   <!-- About Section -->
   <section
     id="about"
     data-aos="fade-up"
-    class="w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-8 md:px-24 py-14 md:py-20 bg-black mt-10 md:mt-16"
+    class="section w-[90%] md:max-w-6xl mx-auto text-center border border-white rounded-3xl px-8 md:px-24 py-14 md:py-20 bg-black mt-10 md:mt-16"
     >
     <h2 class="text-3xl font-bold mb-6">ABOUT US</h2>
     <p class="text-sm md:text-lg leading-relaxed text-white">
@@ -117,7 +117,7 @@
 <section
   id="why"
   data-aos="fade-up"
-  class="w-[98%] md:max-w-5xl mx-auto px-2 md:px-8 py-14 md:py-20 bg-black my-24"
+  class="section w-[98%] md:max-w-5xl mx-auto px-2 md:px-8 py-14 md:py-20 bg-black my-24 "
 >
   <!-- Section Header -->
   <div class="text-center mb-16">
@@ -155,8 +155,8 @@
     <div id="why-carousel" class="flex transition-transform duration-700 ease-in-out will-change-transform touch-pan-x">
       <div class="min-w-full px-2">
         <div class="why-us-card text-center p-8 w-[95%] mx-auto min-h-[400px]">
-          <h3 class="text-2xl font-bold mt-6 mb-3 text-white">Premium Service</h3>
-          <p class="text-sm text-gray-300 mb-6">
+          <h3 class="text-2xl font-bold mt-6 mb-3 text-white justify-center">Premium Service</h3>
+          <p class="text-sm text-gray-300 mb-6 justify-center">
             We ensure a smooth, hassle-free experience with real-time project updates, clear communications, and a dedicated support team to bring your vision to life effortlessly.
           </p>
         </div>
@@ -254,14 +254,6 @@
   </div>
 </section>
 
-<style>
-  .why-us-card {
-    background: linear-gradient(to bottom, #1a1a1a, #111);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1.75rem;
-    box-shadow: inset 0 0 1px #fff, 0 0 10px rgba(255, 255, 255, 0.1);
-  }
-</style>
 
 <script>
   let whyIndex = 0;
@@ -627,6 +619,34 @@
   window.addEventListener('DOMContentLoaded', toggleAccordionForScreenSize);
   window.addEventListener('resize', toggleAccordionForScreenSize);
 
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".section");
+
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      rootMargin: "0px", // No margin
+      threshold: 0.1, // Trigger when 10% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Fade in when section enters viewport
+          entry.target.classList.add("fade-in-up");
+          entry.target.classList.remove("fade-out-down");
+        } else {
+          // Fade out when section leaves viewport
+          entry.target.classList.add("fade-out-down");
+          entry.target.classList.remove("fade-in-up");
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
 </script>
 
 <!-- AOS Script -->
