@@ -1,3 +1,8 @@
+/* Reset default margins and padding for body and html */
+html, body {
+  margin: 0;
+  padding: 0;
+}
 body {
     background-color: black; /* Black fallback background */
   }
@@ -51,6 +56,7 @@ body {
     padding: 0;
     margin: 0;
   }
+  
 }
   
   @keyframes fadeInUp {
@@ -154,14 +160,27 @@ body {
     pointer-events: none;
   }
   
-  @media only screen and (max-width: 768px) {
-    .why-us-card {
-      border: 4px solid #bbb; /* Fallback to solid border */
-      border-radius: 16px;
-      -webkit-border-radius: 16px;
-      -moz-border-radius: 16px;
-    }
+ /* Media query for mobile devices (screens smaller than or equal to 768px) */
+@media only screen and (max-width: 768px) {
+  .why-us-card {
+    border: 4px solid #bbb; /* Fallback to solid border */
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
   }
+
+  /* Reduce gap between paragraph and slider dots */
+  .why-us-card p {
+    margin-bottom: 0; /* Remove default bottom margin */
+    padding-bottom: 0; /* Remove any padding */
+  }
+
+  .why-us-card .slider-dots {
+    margin-top: -5px; /* Pull dots closer to paragraph */
+    padding-top: 0; /* Remove any padding */
+    margin-bottom: 0; /* Ensure no extra space below dots */
+  }
+}
   /* Styles for the WHY US banner */
   .banner {
     background: linear-gradient(to bottom, #1a1a1a, #000000);
