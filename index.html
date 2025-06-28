@@ -41,7 +41,7 @@
     </nav>
 
     <!-- Free Demo Button for Desktop -->
-    <button class="z-10 hidden md:block ml-6 custom-demo-btn">Get a Free Demo!</button>
+    <button class="z-10 hidden md:block ml-6 custom-demo-btn" onclick="openDemo()">Get a Free Demo!</button>
 
     <!-- Hamburger Button -->
     <button id="menu-toggle" class="md:hidden text-white text-2xl z-10">
@@ -429,6 +429,11 @@
   }
 
   setInterval(nextSlide, 5000);
+
+
+  function openDemo() {
+      window.open("demo-form.html", "_self");
+    }
 </script>
 
 
@@ -675,6 +680,7 @@
     duration: 1200,
     once: true
   });
+  
 </script>
 </body>
 </html>
