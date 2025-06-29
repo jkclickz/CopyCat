@@ -26,6 +26,12 @@
       opacity: 0.8;
     }
 
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+
     textarea {
       resize: none;
     }
@@ -55,15 +61,27 @@
       transition: all 0.4s ease;
       z-index: -1;
     }
+
+    #mobile-menu {
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(4px);
+      transition: right 0.3s ease-in-out;
+      right: -100%;
+    }
   </style>
 </head>
 
 <body class="bg-black text-white">
 
   <!-- Header -->
-  <header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white">
-    <!-- Logo -->
-    <img src="img/topnav.png" href="index.html" alt="CopyCat Logo" class="w-28 z-10 relative" />
+  <header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white relative">
+    <img src="img/topnav.png" alt="CopyCat Logo" class="w-28 z-10 relative" />
+
+    <!-- Mobile Menu Icon -->
+    <button id="menu-toggle" class="md:hidden text-white text-2xl z-10 absolute right-4 top-4">
+      ☰
+    </button>
 
     <!-- Nav -->
     <nav class="hidden md:flex space-x-8 uppercase tracking-wide text-sm">
@@ -75,18 +93,21 @@
     </nav>
 
     <!-- Button -->
-    <button class="z-10 hidden md:block ml-6 custom-demo-btn" onclick="openDemo()">Get a Free Demo!</button>
-
-    <!-- Mobile Menu Icon -->
-    <button id="menu-toggle" class="md:hidden text-white text-2xl z-10">
-      ☰
-    </button>
+    <button class="z-10 hidden md:block ml-6 custom-demo-btn">Get a Free Demo!</button>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex flex-col lg:flex-row justify-center items-start gap-10 px-4 sm:px-6 md:px-10 py-10 sm:py-14">
+  <!-- Mobile Menu Slide-out -->
+  <div id="mobile-menu" class="fixed top-0 right-[-100%] h-full w-3/4 sm:w-1/2 bg-black text-white flex flex-col space-y-6 p-6 pt-20 uppercase tracking-wide text-sm md:hidden">
+    <button id="close-menu" class="absolute top-4 right-4 text-3xl">×</button>
+    <a href="index.html" class="hover:text-gray-300">Services</a>
+    <a href="#" class="hover:text-gray-300">Our Work</a>
+    <a href="#" class="hover:text-gray-300">Why Us</a>
+    <a href="#" class="hover:text-gray-300">About Us</a>
+    <a href="#" class="hover:text-gray-300">Contact</a>
+  </div>
 
-    <!-- Left Text Content -->
+  <!-- Main -->
+  <main class="flex flex-col lg:flex-row justify-center items-start gap-10 px-4 sm:px-6 md:px-10 py-10 sm:py-14">
     <section class="w-full max-w-xl text-center lg:text-left">
       <h2 class="text-3xl sm:text-4xl font-bold mb-6 leading-snug">
         Get a Free Demo<br>And Discover How<br>We Can Elevate<br>Your Brand
@@ -109,12 +130,9 @@
       </p>
     </section>
 
-    <!-- Right Form with Background -->
     <section class="w-full max-w-lg p-6 sm:p-8 rounded-xl shadow-xl border border-gray-700 mx-auto lg:mx-0 mt-10 lg:mt-0"
       style="background-color: rgba(21, 20, 20, 0.85); background-image: url('/img/bgg.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
-      
       <form class="space-y-4">
-        <!-- First Row -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <input type="text" placeholder="Enter Your Name" required>
           <input type="email" placeholder="Enter Your Business Email" required>
@@ -122,23 +140,18 @@
           <input type="text" placeholder="Enter Your Contact Number">
         </div>
 
-        <!-- Website -->
         <input type="text" placeholder="Enter Your Website URL">
 
-        <!-- Date + Selects -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <input type="date">
-          <select>
-            <option selected disabled>Choose call time</option>
-            <option>Morning</option>
-            <option>Afternoon</option>
-            <option>Evening</option>
-          </select>
+          <input type="time">
           <select>
             <option selected disabled>Choose your timezone</option>
-            <option>IST</option>
-            <option>GMT</option>
-            <option>PST</option>
+            <option value="Asia/Kolkata">Asia/Kolkata</option>
+            <option value="Asia/Dubai">Asia/Dubai</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="America/New_York">America/New_York</option>
+            <option value="Australia/Sydney">Australia/Sydney</option>
           </select>
           <select>
             <option selected disabled>Service you need</option>
@@ -148,13 +161,11 @@
           </select>
         </div>
 
-        <!-- Message -->
         <div>
           <label class="block text-sm mb-1">Write a message</label>
           <textarea rows="4" placeholder="What do you have in mind?"></textarea>
         </div>
 
-        <!-- Submit -->
         <div class="text-center pt-2">
           <button type="submit" class="bg-white text-black px-8 py-2 rounded-full text-sm font-semibold hover:bg-gray-200">
             Submit
@@ -164,74 +175,29 @@
     </section>
   </main>
 
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const closeBtn = document.getElementById("close-menu");
 
-  <!-- JavaScript -->
-<script>
-  const menu = document.getElementById("mobile-menu");
-  const toggle = document.getElementById("menu-toggle");
-  const closeBtn = document.getElementById("close-menu");
-  const servicesDropdown = document.getElementById("services-dropdown");
-  const dropdownItems = document.getElementById("dropdown-items");
-
-  toggle.onclick = () => {
-    menu.style.right = "0";
-  };
-
-  closeBtn.onclick = () => {
-    menu.style.right = "-100%";
-  };
-
-  servicesDropdown.onclick = () => {
-    dropdownItems.classList.toggle("hidden");
-  };
-
-  function toggleAccordionForScreenSize() {
-    const detailsElements = document.querySelectorAll('.footer-columns details');
-    const isMobile = window.innerWidth <= 640;
-
-    detailsElements.forEach(detail => {
-      if (!isMobile) {
-        detail.setAttribute('open', true); // expand all
-      } else {
-        detail.removeAttribute('open'); // collapse all
-      }
-    });
-  }
-
-  // Run on load and resize
-  window.addEventListener('DOMContentLoaded', toggleAccordionForScreenSize);
-  window.addEventListener('resize', toggleAccordionForScreenSize);
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".section");
-
-    const observerOptions = {
-      root: null, // Use the viewport as the root
-      rootMargin: "0px", // No margin
-      threshold: 0.1, // Trigger when 10% of the section is visible
+    toggle.onclick = () => {
+      menu.style.right = "0";
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Fade in when section enters viewport
-          entry.target.classList.add("fade-in-up");
-          entry.target.classList.remove("fade-out-down");
-        } else {
-          // Fade out when section leaves viewport
-          entry.target.classList.add("fade-out-down");
-          entry.target.classList.remove("fade-in-up");
-        }
-      });
-    }, observerOptions);
+    closeBtn.onclick = () => {
+      menu.style.right = "-100%";
+    };
 
-    sections.forEach((section) => {
-      observer.observe(section);
+    document.addEventListener("DOMContentLoaded", () => {
+      menu.style.right = "-100%";
     });
-  });
 
-  
-</script>
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.style.right = '-100%';
+      });
+    });
+  </script>
+
 </body>
 </html>
