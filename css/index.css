@@ -365,18 +365,16 @@ body {
 }
 
 .footer-left {
-    flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-text {
-    font-size: 3.5rem;
-    font-weight: normal;
-    font-style: bold;
-    color: white;
-    font-family: 'Times New Roman', serif;
-    margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Default = left align on desktop */
+  text-align: left;
 }
-
 .footer-columns {
     display: flex;
     gap: 80px;
@@ -641,7 +639,8 @@ body {
     }
 
     .logo-text {
-        margin: 0 auto 1rem;
+      align-items: center;
+      text-align: center;
     }
 
     /* Social section styling */
