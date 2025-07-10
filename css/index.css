@@ -358,6 +358,9 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 80px;
+    color: white;
+    align-items: center;
+    font-weight: 400;
     margin-bottom: 50px;
 }
 
@@ -368,7 +371,7 @@ body {
 .logo-text {
     font-size: 3.5rem;
     font-weight: normal;
-    font-style: italic;
+    font-style: bold;
     color: white;
     font-family: 'Times New Roman', serif;
     margin-bottom: 80px;
@@ -468,6 +471,7 @@ body {
     color: #888;
     font-size: 0.85rem;
     margin-top: -5%;
+    margin-left: 14%;
 }
 
 /* Ensure footer columns are visible and disable accordion on laptop screens (above 640px) */
@@ -675,7 +679,9 @@ body {
     .footer-bottom {
         text-align: center;
         padding-top: 1rem;
+        margin-left: 19%;
         font-size: 0.8rem;
+        margin-top: -23%;
     }
 
     /* Reduce padding for mobile */
