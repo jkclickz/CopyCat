@@ -677,10 +677,9 @@ body {
     /* Footer bottom */
     .footer-bottom {
         text-align: center;
-        padding-top: 1rem;
-        margin-left: 19%;
+        margin-top: -17%;
+        margin-left: 24%;
         font-size: 0.8rem;
-        margin-top: -23%;
     }
 
     /* Reduce padding for mobile */
