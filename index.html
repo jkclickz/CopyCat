@@ -573,7 +573,7 @@
                       <li><a href="#">About</a></li>
                       <li><a href="#">Contact</a></li>
                       <li><a href="#">Career</a></li>
-                      <li><a href="#" id="privacy-link">Privacy Policy</a></li>
+                      <li><a href="privacy-policy.html">Privacy Policy</a></li>
 
                   </ul>
               </details>
@@ -675,21 +675,7 @@
       observer.observe(section);
     });
   });
-  function toggleModal(show = true) {
-    const modal = document.getElementById('privacyModal');
-    modal.classList.toggle('hidden', !show);
-    modal.classList.toggle('flex', show);
-  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const privacyLink = document.getElementById("privacy-link");
-    if (privacyLink) {
-      privacyLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        toggleModal(true);
-      });
-    }
-  });
   
 </script>
 
@@ -702,67 +688,5 @@
   });
   
 </script>
-
-<!-- Privacy Policy Modal -->
-<!-- Privacy Policy Modal -->
-<div id="privacyModal" class="fixed inset-0 z-50 bg-black bg-opacity-60 hidden items-center justify-center">
-  <div class="bg-[#1c1c1c] text-white p-6 rounded-xl w-[95%] max-w-4xl overflow-y-auto max-h-[90vh]">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-2xl font-bold">Privacy Policy</h2>
-      <button onclick="toggleModal(false)" class="text-white text-2xl">&times;</button>
-    </div>
-    <div class="space-y-4 text-sm leading-relaxed">
-      <h3 class="font-bold">1. Introduction</h3>
-      <p>Welcome to [Your Website Name] ("we", "our", or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and what rights you have.</p>
-
-      <h3 class="font-bold">2. Information We Collect</h3>
-      <p><strong>Personal Information:</strong> Name, email address, phone number (only if submitted through forms).</p>
-      <p><strong>Usage Data:</strong> IP address, browser type, pages visited, time spent on the website.</p>
-      <p><strong>Cookies:</strong> To improve user experience and analyze traffic.</p>
-
-      <h3 class="font-bold">3. How We Use Your Information</h3>
-      <ul class="list-disc pl-5">
-        <li>Communicating with you (for queries, updates, or promotions).</li>
-        <li>Improving our website and services.</li>
-        <li>Sending newsletters (only if subscribed).</li>
-        <li>Security and fraud prevention.</li>
-      </ul>
-
-      <h3 class="font-bold">4. How We Share Your Data</h3>
-      <p>We do not sell or rent your personal data to third parties. However, we may share data with:</p>
-      <ul class="list-disc pl-5">
-        <li>Service providers (hosting, email marketing tools, etc.)</li>
-        <li>Law enforcement if required by law.</li>
-      </ul>
-
-      <h3 class="font-bold">5. Cookies</h3>
-      <p>We use cookies to personalize content, provide social media features, and analyze traffic. You can control or delete cookies through your browser settings.</p>
-
-      <h3 class="font-bold">6. Data Security</h3>
-      <p>We use industry-standard measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
-
-      <h3 class="font-bold">7. Your Rights</h3>
-      <ul class="list-disc pl-5">
-        <li>Access or correct your data</li>
-        <li>Request data deletion</li>
-        <li>Opt-out of newsletters or marketing</li>
-      </ul>
-      <p>To do so, contact us at: [your email]</p>
-
-      <h3 class="font-bold">8. Third-Party Links</h3>
-      <p>Our site may contain links to other websites. We are not responsible for the privacy practices of those websites.</p>
-
-      <h3 class="font-bold">9. Updates to this Policy</h3>
-      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date.</p>
-
-      <h3 class="font-bold">10. Contact Us</h3>
-      <p>If you have any questions or concerns, contact:</p>
-      <p><strong>Email:</strong> [your email]<br>
-      <strong>Phone:</strong> [your phone]<br>
-      <strong>Address:</strong> [your address]</p>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
