@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy - CopyCat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ Tailwind CSS via CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ✅ Force Dark Background (fallback) -->
+  <!-- Font Awesome (for footer icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./css/index.css" />
+
   <style>
     body, html {
       background-color: #1c1c1c;
       color: white;
     }
   </style>
-
-<link rel="stylesheet" href="./css/index.css">
-
 </head>
 
-<header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white relative">
+<body class="min-h-screen text-white font-sans leading-relaxed">
+
+  <!-- ✅ HEADER FIXED (moved inside <body>) -->
+  <header class="w-full px-4 md:px-12 py-4 flex justify-between items-center bg-black text-white relative">
     <a href="index.html">
       <img src="img/topnav.png" alt="CopyCat Logo" class="w-28 z-10 relative" />
     </a>
-    
-    <!-- Mobile Menu Icon -->
-    <button id="menu-toggle" class="md:hidden text-white text-2xl z-10 absolute right-4 top-4">
-      ☰
-    </button>
 
-    <!-- Nav -->
+    <button id="menu-toggle" class="md:hidden text-white text-2xl z-10 absolute right-4 top-4">☰</button>
+
     <nav class="hidden md:flex space-x-8 uppercase tracking-wide text-sm">
       <a href="index.html" class="hover:text-gray-300">Services</a>
       <a href="#" class="hover:text-gray-300">Our Work</a>
@@ -39,17 +43,26 @@
       <a href="#" class="hover:text-gray-300">Contact</a>
     </nav>
 
-    <!-- Button -->
     <button class="z-10 hidden md:block ml-6 custom-demo-btn">Get a Free Demo!</button>
+
+     <!-- Mobile Menu Slide-out -->
+  <div id="mobile-menu" class="fixed top-0 right-[-100%] h-full w-3/4 sm:w-1/2 bg-black text-white flex flex-col space-y-6 p-6 pt-20 uppercase tracking-wide text-sm md:hidden">
+    <button id="close-menu" class="absolute top-4 right-4 text-3xl">×</button>
+    <a href="index.html" class="hover:text-gray-300">Services</a>
+    <a href="#" class="hover:text-gray-300">Our Work</a>
+    <a href="#" class="hover:text-gray-300">Why Us</a>
+    <a href="#" class="hover:text-gray-300">About Us</a>
+    <a href="#" class="hover:text-gray-300">Contact</a>
+  </div>
+
   </header>
 
-<body class="min-h-screen text-white font-sans leading-relaxed">
-
-  <div class="max-w-4xl mx-auto px-6 py-10">
+  <!-- ✅ PRIVACY POLICY CONTENT -->
+  <div class=" max-w-4xl mx-auto px-6 py-10">
     <h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
 
     <h2 class="text-xl font-semibold mt-6">1. Introduction</h2>
-    <p>Welcome to [Your Website Name] ("we", "our", or "us"). We are committed to protecting your personal information and your right to privacy...</p>
+    <p>Welcome to CopyCat ("we", "our", or "us"). We are committed to protecting your personal information and your right to privacy...</p>
 
     <h2 class="text-xl font-semibold mt-6">2. Information We Collect</h2>
     <ul class="list-disc pl-6">
@@ -94,21 +107,124 @@
     <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated date.</p>
 
     <h2 class="text-xl font-semibold mt-6">10. Contact Us</h2>
-    <p><strong>Email:</strong> [your email] <br>
-       <strong>Phone:</strong> [your phone] <br>
-       <strong>Address:</strong> [your address]</p>
-
-    <div class="mt-10">
-      <a href="index.html" class="text-blue-400 hover:underline">← Back to Home</a>
+    <p>
+      <strong>Email:</strong> [your email] <br>
+      <strong>Phone:</strong> [your phone] <br>
+      <p class="mb-16"><strong>Address:</strong> [your address]</p>
+    </p>
     </div>
-  </div>
+  <!-- ✅ FOOTER SECTION -->
+   <div class="footer text-white py-10 px-6">
+    <div class="footer-header mt-14">
+      <h1 class="footer-title">WE CAN DO ANYTHING</h1>
+    </div>
 
-  
-  <p class="footer-bottom" style="color: #fff; font-weight: 800; margin-top: 8px; text-align: center;">
-    ©2025 CopyCat Inc.
-    All rights reserved.
-  </p>
+    <div class="footer-content">
+      <div class="footer-left">
+        <div class="logo-text">
+          <img src="./img/topnav.png" alt="Logo" />
+          <p class="footer-bottom">
+            ©2025 CopyCat Inc.<br />
+            All rights reserved.
+          </p>
+        </div>
+      </div>
 
+      <div class="footer-columns">
+        <details class="footer-column">
+          <summary><h3>Our Service</h3></summary>
+          <ul>
+            <li><a href="#">3D generalist</a></li>
+            <li><a href="#">2D generalist</a></li>
+            <li><a href="#">Game develop</a></li>
+            <li><a href="#">Web develop</a></li>
+            <li><a href="#">AI & Automation</a></li>
+            <li><a href="#">VFX & Motion Graphics</a></li>
+          </ul>
+        </details>
+
+        <div class="footer-column">
+          <details>
+            <summary><h3>Company</h3></summary>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Career</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="footer-column">
+          <details>
+            <summary><h3>Resources</h3></summary>
+            <ul>
+              <li><a href="#">Our Work</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Why us</a></li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="footer-column">
+          <h3>Business Hours</h3>
+          <div class="business-hours-text">
+            We operate 24/7 to<br />serve you anytime.
+          </div>
+        </div>
+      </div>
+
+      <div class="social-section">
+        <h4>Follow Us</h4>
+        <div class="flex space-x-4 text-xl">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <!-- ✅ Footer Accordion Script -->
+  <script>
+    function toggleAccordionForScreenSize() {
+      const detailsElements = document.querySelectorAll('.footer-columns details');
+      const isMobile = window.innerWidth <= 640;
+
+      detailsElements.forEach(detail => {
+        if (!isMobile) {
+          detail.setAttribute('open', true);
+        } else {
+          detail.removeAttribute('open');
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', toggleAccordionForScreenSize);
+    window.addEventListener('resize', toggleAccordionForScreenSize);
+
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const closeBtn = document.getElementById("close-menu");
+
+    toggle.onclick = () => {
+      menu.style.right = "0";
+    };
+
+    closeBtn.onclick = () => {
+      menu.style.right = "-100%";
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      menu.style.right = "-100%";
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.style.right = '-100%';
+      });
+    });
+  </script>
 </body>
-
 </html>
