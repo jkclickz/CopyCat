@@ -635,14 +635,21 @@ body {
 
     /* Center the logo/text */
     .footer-left {
-        text-align: center;
-    }
-
-    .logo-text {
+      display: flex;
+      flex-direction: column;
       align-items: center;
       text-align: center;
+      width: 100%;
+      margin-bottom: 1rem;
     }
-
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
     /* Social section styling */
     .social-section {
         text-align: center;
