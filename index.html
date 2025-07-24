@@ -282,6 +282,31 @@
     }, 4000);
   }
 
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      // Swiped left
+      whyIndex = (whyIndex + 1) % totalWhySlides;
+      updateWhyUsCarousel(whyIndex);
+    }
+    if (touchEndX > touchStartX + 50) {
+      // Swiped right
+      whyIndex = (whyIndex - 1 + totalWhySlides) % totalWhySlides;
+      updateWhyUsCarousel(whyIndex);
+    }
+  }
+
+  carouselContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carouselContainer.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
   function pauseCarousel() {
     isPaused = true;
     clearInterval(autoSlide); // Stop auto-slide during interaction
