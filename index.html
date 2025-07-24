@@ -421,17 +421,7 @@
   </div>
 
   <!-- Arrows visible only on desktop -->
-  <div class=" md:block absolute left-2 md:left-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="prevSlide()">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-    </svg>
-  </div>
-
-  <div class=" md:block absolute right-2 md:right-6 top-1/2 transform -translate-y-1/2 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full cursor-pointer" onclick="nextSlide()">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
-  </div>
+  
 </section>
 
 <script>
@@ -459,6 +449,31 @@
   function openDemo() {
       window.open("demo-form.html", "_self");
     }
+    let serviceStartX = 0;
+  let serviceEndX = 0;
+  const servicesContainer = document.getElementById("services-carousel");
+
+  function handleServiceSwipe() {
+    if (serviceEndX < serviceStartX - 50) {
+      // Swiped left
+      index = (index + 1) % services;
+      updateCarousel();
+    }
+    if (serviceEndX > serviceStartX + 50) {
+      // Swiped right
+      index = (index - 1 + services) % services;
+      updateCarousel();
+    }
+  }
+
+  servicesContainer.addEventListener("touchstart", (e) => {
+    serviceStartX = e.changedTouches[0].screenX;
+  });
+
+  servicesContainer.addEventListener("touchend", (e) => {
+    serviceEndX = e.changedTouches[0].screenX;
+    handleServiceSwipe();
+  });
 </script>
 
 
