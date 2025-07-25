@@ -418,6 +418,18 @@
         </div>
       </div>
     </div>
+    <!-- Arrows for all devices -->
+<div class="absolute top-1/2 transform -translate-y-1/2 left-2 z-10">
+  <button onclick="prevSlide()" class="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition-all">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+</div>
+<div class="absolute top-1/2 transform -translate-y-1/2 right-2 z-10">
+  <button onclick="nextSlide()" class="bg-white text-black p-2 rounded-full hover:bg-gray-200 transition-all">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
   </div>
 
   <!-- Arrows visible only on desktop -->
@@ -449,31 +461,7 @@
   function openDemo() {
       window.open("demo-form.html", "_self");
     }
-    let serviceStartX = 0;
-  let serviceEndX = 0;
-  const servicesContainer = document.getElementById("services-carousel");
 
-  function handleServiceSwipe() {
-    if (serviceEndX < serviceStartX - 50) {
-      // Swiped left
-      index = (index + 1) % services;
-      updateCarousel();
-    }
-    if (serviceEndX > serviceStartX + 50) {
-      // Swiped right
-      index = (index - 1 + services) % services;
-      updateCarousel();
-    }
-  }
-
-  servicesContainer.addEventListener("touchstart", (e) => {
-    serviceStartX = e.changedTouches[0].screenX;
-  });
-
-  servicesContainer.addEventListener("touchend", (e) => {
-    serviceEndX = e.changedTouches[0].screenX;
-    handleServiceSwipe();
-  });
 </script>
 
 
