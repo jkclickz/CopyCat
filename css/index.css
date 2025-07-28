@@ -76,6 +76,15 @@ body {
     font-family: 'Charlotte';
     src: url('./fonts/charlotte.ttf') format('truetype');
   }
+  @font-face {
+    font-family: 'Morries-Bold';
+    src: url('./fonts/MorrisRomanBlackAlt.ttf') format('truetype');
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .font-morries-bold {
+    font-family: 'Morries-Bold', sans-serif;
+  }
   
   .copycat-logo {
     font-family: 'CC Rollete Qatu Vector', cursive !important;
