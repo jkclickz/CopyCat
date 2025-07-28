@@ -695,13 +695,13 @@ body {
         text-align: left;
         align-items: center;
         margin-top: -17%;
-        margin-left: 28%;
+        margin-left: 34%;
         font-size: 0.8rem;
     }
     .footer-logo{
       align-items: center;
       text-align: center;
-      margin-left: 6%;
+      margin-left: 12%;
     }
     /* Reduce padding for mobile */
     .footer {
