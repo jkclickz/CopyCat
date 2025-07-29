@@ -390,7 +390,7 @@
     <div id="services-carousel" class="flex transition-transform duration-700 ease-in-out">
 
       <!-- Service 1: 2D & 3D Generalist Work -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div id="service-3d" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">2D & 3D Generalist Work</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -400,7 +400,7 @@
       </div>
 
       <!-- Service 2: Web Development -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div  id="service-web" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">Web Development</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -410,7 +410,7 @@
       </div>
 
       <!-- Service 3: VFX & Motion Graphics -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div id="service-vfx" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">VFX & Motion Graphics</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -420,7 +420,7 @@
       </div>
 
       <!-- Service 4: 2D Generalist Work -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div id="service-2d" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">2D Generalist Work</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -430,7 +430,7 @@
       </div>
 
       <!-- Service 5: Game Development -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div id="service-game" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">Game Development</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -440,7 +440,7 @@
       </div>
 
       <!-- Service 6: AI & Automation -->
-      <div class="min-w-full flex justify-center px-2" data-aos="fade-up">
+      <div id="service-ai" class="min-w-full flex justify-center px-2" data-aos="fade-up">
         <div class="w-full bg-gradient-to-b from-[#111111] to-[#1a1a1a] border border-white rounded-2xl shadow-xl text-center px-6 py-10">
           <h2 class="text-2xl md:text-3xl font-morries-bold text-white mb-4">AI & Automation</h2>
           <p class="text-base md:text-lg leading-relaxed text-white">
@@ -463,6 +463,27 @@
       </button>
     </div>
   </div>
+  <script>
+      const serviceLinks = document.querySelectorAll(".service-link");
+  const servicesCarousel = document.getElementById("services-carousel");
+
+  serviceLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const index = parseInt(this.getAttribute("data-index"));
+      const slideWidth = servicesCarousel.querySelector(".min-w-full").offsetWidth;
+
+      servicesCarousel.scrollTo({
+        left: index * slideWidth,
+        behavior: "smooth"
+      });
+
+      // Optionally update URL hash
+      history.pushState(null, "", this.getAttribute("href"));
+    });
+  });
+  </script>
 </section>
 
 <script>
@@ -559,7 +580,7 @@
             <label class="text-sm text-white md:w-24 text-left md:text-right mb-5 md:mb-0">Select Service</label>
             <select class="w-full flex-1 bg-gray-300 text-black py-1 px-3 rounded-full focus:outline-none">
               <option>Select Service</option>
-              <option>2D Generalist</option>
+              <option >2D Generalist</option>
               <option>3D Generalist</option>
               <option>Game Development</option>
               <option>Web Development</option>
@@ -611,17 +632,18 @@
     
 
       <div class="footer-columns">
-          <details class="footer-column">
-              <summary><h3>Our Service</h3></summary>
-              <ul>
-                  <li><a href="#">3D generalist</a></li>
-                  <li><a href="#">2D generalist</a></li>
-                  <li><a href="#">Game develop</a></li>
-                  <li><a href="#">Web develop</a></li>
-                  <li><a href="#">AI & Automation</a></li>
-                  <li><a href="#">VFX & Motion Graphics</a></li>
-              </ul>
-          </details>
+        <details class="footer-column">
+          <summary><h3>Our Service</h3></summary>
+          <ul>
+            <li><a href="#service-3d" class="service-link" data-index="0">3D Generalist</a></li>
+            <li><a href="#service-2d" class="service-link" data-index="3">2D Generalist</a></li>
+            <li><a href="#service-game" class="service-link" data-index="4">Game Development</a></li>
+            <li><a href="#service-web" class="service-link" data-index="1">Web Development</a></li>
+            <li><a href="#service-ai" class="service-link" data-index="5">AI & Automation</a></li>
+            <li><a href="#service-vfx" class="service-link" data-index="2">VFX & Motion Graphics</a></li>
+          </ul>
+        </details>
+        
 
           <div class="footer-column">
               <details>
@@ -669,6 +691,7 @@
 </footer>
 <!-- JavaScript -->
 <script>
+ 
   const menu = document.getElementById("mobile-menu");
   const toggle = document.getElementById("menu-toggle");
   const closeBtn = document.getElementById("close-menu");
