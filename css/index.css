@@ -643,22 +643,7 @@ body {
     }
 
     /* Center the logo/text */
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.5rem;
-      width: 100%;
-    }
+   
     /* Social section styling */
     .social-section {
         text-align: center;
@@ -690,14 +675,45 @@ body {
         color: #ccc;
     }
 
-    /* Footer bottom */
-    .footer-bottom {
+    @media (max-width: 640px) {
+      .footer-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        margin-top: -17%;
-        margin-left: 24%;
-        font-size: 0.8rem;
+        width: 100%;
+        margin: 0 auto;
+      }
+    
+      .logo-text {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+      }
+    
+      .logo-text img {
+        max-width: 130px;
+        height: auto;
+        margin-bottom: 0.5rem;
+      }
+    
+      .footer-bottom {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+        color: white !important;
+      }
     }
-
+    
     /* Reduce padding for mobile */
     .footer {
         padding: 40px 20px;
