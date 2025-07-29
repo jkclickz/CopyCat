@@ -34,12 +34,25 @@
   
       <button id="menu-toggle" class="md:hidden text-white text-2xl z-10 absolute right-4 top-4">☰</button>
   
-      <nav class="hidden md:flex space-x-8 uppercase tracking-wide text-sm">
-        <a href="index.html" class="hover:text-gray-300">Services</a>
-        <a href="#" class="hover:text-gray-300">Our Work</a>
-        <a href="#" class="hover:text-gray-300">Why Us</a>
-        <a href="#" class="hover:text-gray-300">About Us</a>
-        <a href="#" class="hover:text-gray-300">Contact</a>
+      <nav class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-12 uppercase tracking-wide text-white">
+        <!-- SERVICES Dropdown -->
+        <div class="relative group">
+          <button class="hover:text-gray-300">SERVICES</button>
+          <div class="absolute hidden group-hover:block bg-black mt-2 p-4 rounded-lg shadow-lg space-y-2 z-50 w-56 border border-white/10">
+            <a href="#service-3d" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">3D Generalist</a>
+            <a href="#service-2d" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">2D Generalist</a>
+            <a href="#service-game" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Game Development</a>
+            <a href="#service-web" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Web Development</a>
+            <a href="#service-ai" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">AI & Automation</a>
+            <a href="#service-vfx" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">VFX & Motion Graphics</a>
+          </div>
+        </div>
+      
+        <!-- Other nav items -->
+        <a href="#work" class="hover:text-gray-300">Our Work</a>
+        <a href="#why" class="hover:text-gray-300">Why Us</a>
+        <a href="#about" class="hover:text-gray-300">About Us</a>
+        <a href="#contact" class="hover:text-gray-300">Contact</a>
       </nav>
   
       <button class="z-10 hidden md:block ml-6 custom-demo-btn">Get a Free Demo!</button>
