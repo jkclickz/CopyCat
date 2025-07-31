@@ -152,7 +152,6 @@ body {
     box-shadow: 0 0 8px #ffffff88, 0 0 4px #ffffff44;
   }
   
-
   
   .why-us-card {
     position: relative;
@@ -436,6 +435,9 @@ body {
     margin-top: 25%;
 }
 
+#service-2d{
+  scroll-margin-top: 30%;
+}
 .social-section h4 {
     font-size: 1rem;
     font-weight: bold;
