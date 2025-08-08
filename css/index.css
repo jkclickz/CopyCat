@@ -94,6 +94,43 @@ body {
   .nav-logo {
     font-family: 'Charlotte', cursive;
   }
+
+  /* Dropdown menu styling */
+.nav-services {
+  position: relative;
+}
+
+.nav-services > .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%; /* sits right below parent */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 9999;
+}
+
+/* Show dropdown on hover of parent OR dropdown itself */
+.nav-services:hover > .dropdown,
+.nav-services .dropdown:hover {
+  display: block;
+}
+
+/* Dropdown links */
+.nav-services .dropdown a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+  white-space: nowrap;
+}
+
+.nav-services .dropdown a:hover {
+  background-color: #222;
+}
+
   @keyframes zoomIn {
     0% {
       opacity: 0;

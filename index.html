@@ -28,25 +28,23 @@
 
     <!-- Desktop Nav -->
     <nav class="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-12 uppercase tracking-wide text-white">
-      <!-- SERVICES Dropdown -->
-      <div class="relative group">
+      <div class="nav-services">
         <button class="hover:text-gray-300">SERVICES</button>
-        <div class="absolute hidden group-hover:block bg-black mt-2 p-4 rounded-lg shadow-lg space-y-2 z-50 w-56 border border-white/10">
-          <a href="#service-3d" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">3D Generalist</a>
-          <a href="#service-2d" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">2D Generalist</a>
-          <a href="#service-game" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Game Development</a>
-          <a href="#service-web" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Web Development</a>
-          <a href="#service-ai" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">AI & Automation</a>
-          <a href="#service-vfx" class="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">VFX & Motion Graphics</a>
+        <div class="dropdown">
+          <a href="#service-3d">3D generalist</a>
+          <a href="#service-2d">2D generalist</a>
+          <a href="#service-game">Game development</a>
+          <a href="#service-web">Web development</a>
+          <a href="#service-ai">AI & Automation</a>
+          <a href="#service-vfx">VFX & Motion Graphics</a>
         </div>
       </div>
-    
-      <!-- Other nav items -->
       <a href="#work" class="hover:text-gray-300">Our Work</a>
-      <a href="#why" class="hover:text-gray-300">Why Us</a>
+      <a href="#why" class="hover:text-gray-300">Why us</a>
       <a href="#about" class="hover:text-gray-300">About Us</a>
       <a href="#contact" class="hover:text-gray-300">Contact</a>
     </nav>
+    
     
     <!-- Free Demo Button for Desktop -->
     <button class="z-10 hidden md:block ml-6 custom-demo-btn" onclick="openDemo()">Get a Free Demo!</button>
@@ -454,36 +452,99 @@
 
   <!-- JS to Scroll -->
   <script>
-   document.querySelectorAll('.service-link').forEach(link => {
+    //   document.querySelectorAll('.service-link').forEach(link => {
+//   link.addEventListener('click', function (e) {
+//     e.preventDefault();
+
+//     const href = this.getAttribute('href');
+//     const index = parseInt(this.getAttribute('data-index'));
+
+//     // First, scroll the carousel to show the correct service
+//     const carousel = document.getElementById('services-carousel');
+//     const slideWidth = document.querySelector('#services-carousel .min-w-full').offsetWidth;
+    
+//     // Update carousel position
+//     carousel.style.transform = `translateX(-${index * 100}%)`;
+    
+//     // Wait for carousel animation to complete, then scroll to center the section
+//     setTimeout(() => {
+//       const target = document.querySelector(href);
+//       if (target) {
+//         // Calculate the position to center the service card on screen
+//         const targetRect = target.getBoundingClientRect();
+//         const windowHeight = window.innerHeight;
+//         const targetHeight = targetRect.height;
+        
+//         // Calculate offset to center the card
+//         const centerOffset = (windowHeight - targetHeight) / 2;
+//         const yPosition = target.getBoundingClientRect().top + window.pageYOffset - centerOffset;
+        
+//         window.scrollTo({ 
+//           top: yPosition, 
+//           behavior: 'smooth' 
+//         });
+//       }
+//     }, 300); // Wait for carousel transition
+
+//     // Update browser history
+//     history.replaceState(null, '', ' ');
+//     history.pushState(null, '', href);
+//   });
+// });
+
+// Also update the dropdown navigation in header
+document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
 
     const href = this.getAttribute('href');
-    const index = parseInt(this.getAttribute('data-index'));
+    
+    // Find the corresponding index for this service
+    const serviceIndex = {
+      '#service-3d': 0,
+      '#service-web': 1, 
+      '#service-vfx': 2,
+      '#service-2d': 3,
+      '#service-game': 4,
+      '#service-ai': 5
+    };
+    
+    const index = serviceIndex[href];
+    
+    if (index !== undefined) {
+      // Update carousel position
+      const carousel = document.getElementById('services-carousel');
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+      
+      // Wait for carousel animation, then scroll to center
+      setTimeout(() => {
+        const target = document.querySelector(href);
+        if (target) {
+          // Calculate center position
+          const targetRect = target.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const targetHeight = targetRect.height;
+          
+          const centerOffset = (windowHeight - targetHeight) / 2;
+          const yPosition = target.getBoundingClientRect().top + window.pageYOffset - centerOffset;
+          
+          window.scrollTo({ 
+            top: yPosition, 
+            behavior: 'smooth' 
+          });
+        }
+      }, 300);
+    }
 
-    const slideWidth = document.querySelector('#services-carousel .min-w-full').offsetWidth;
-    const carousel = document.getElementById('services-carousel');
-
-    // Slide to the correct card
-    carousel.scrollTo({
-      left: index * slideWidth,
-      behavior: 'smooth'
-    });
-
-    // Scroll to the container position with offset
-    const target = document.querySelector(href);
-    const yOffset = -120; // Adjust this depending on your fixed nav height
-    const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-    window.scrollTo({ top: y, behavior: 'smooth' });
-
-    // Allow repeated clicks to work
-    history.replaceState(null, '', ' ');
-    history.pushState(null, '', href);
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+      mobileMenu.style.right = "-100%";
+    }
   });
 });
-
   </script>
+  
 </section>
 
 <script>
