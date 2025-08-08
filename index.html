@@ -491,58 +491,81 @@
 //     history.pushState(null, '', href);
 //   });
 // });
+// Service ID → Carousel index mapping
+const serviceIndex = {
+  '#service-3d': 0,
+  '#service-web': 1, 
+  '#service-vfx': 2,
+  '#service-2d': 3,
+  '#service-game': 4,
+  '#service-ai': 5
+};
 
-// Also update the dropdown navigation in header
+// ===== Navbar services =====
 document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
   link.addEventListener('click', function (e) {
     e.preventDefault();
-
-    const href = this.getAttribute('href');
-    
-    // Find the corresponding index for this service
-    const serviceIndex = {
-      '#service-3d': 0,
-      '#service-web': 1, 
-      '#service-vfx': 2,
-      '#service-2d': 3,
-      '#service-game': 4,
-      '#service-ai': 5
-    };
-    
-    const index = serviceIndex[href];
-    
-    if (index !== undefined) {
-      // Update carousel position
-      const carousel = document.getElementById('services-carousel');
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-      
-      // Wait for carousel animation, then scroll to center
-      setTimeout(() => {
-        const target = document.querySelector(href);
-        if (target) {
-          // Calculate center position
-          const targetRect = target.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          const targetHeight = targetRect.height;
-          
-          const centerOffset = (windowHeight - targetHeight) / 2;
-          const yPosition = target.getBoundingClientRect().top + window.pageYOffset - centerOffset;
-          
-          window.scrollTo({ 
-            top: yPosition, 
-            behavior: 'smooth' 
-          });
-        }
-      }, 300);
-    }
-
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-      mobileMenu.style.right = "-100%";
-    }
+    handleServiceClick(this.getAttribute('href'));
+    closeMobileMenu();
   });
 });
+
+// ===== Footer services =====
+document.querySelectorAll('footer a[href^="#service-"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    handleServiceClick(this.getAttribute('href'));
+  });
+});
+
+// ===== Mobile menu services =====
+document.querySelectorAll('#mobile-menu a[href^="#service-"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    handleServiceClick(this.getAttribute('href'));
+    closeMobileMenu();
+  });
+});
+
+// ===== Shared function =====
+function handleServiceClick(href) {
+  const index = serviceIndex[href];
+  if (index === undefined) return;
+
+  // Move carousel
+  const carousel = document.getElementById('services-carousel');
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+
+  // Wait for carousel transition, then center scroll
+  setTimeout(() => {
+    const target = document.querySelector(href);
+    if (target) {
+      const targetRect = target.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const targetHeight = targetRect.height;
+      const centerOffset = (windowHeight - targetHeight) / 2;
+      const yPosition = targetRect.top + window.pageYOffset - centerOffset;
+
+      window.scrollTo({
+        top: yPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, 300);
+
+  // Reset hash to allow repeated clicks
+  history.replaceState(null, '', ' ');
+  history.pushState(null, '', href);
+}
+
+// ===== Close mobile menu =====
+function closeMobileMenu() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    mobileMenu.style.right = "-100%";
+  }
+}
+
   </script>
   
 </section>
@@ -704,68 +727,7 @@ document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
             <li><a href="#service-vfx" class="service-link" data-index="2">VFX & Motion Graphics</a></li>
           </ul>
         </details>
-        <script>
-          // Service ID → Carousel index mapping
-const serviceIndex = {
-  '#service-3d': 0,
-  '#service-web': 1, 
-  '#service-vfx': 2,
-  '#service-2d': 3,
-  '#service-game': 4,
-  '#service-ai': 5
-};
-
-// ===== Navbar services =====
-document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    handleServiceClick(this.getAttribute('href'));
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) mobileMenu.style.right = "-100%";
-  });
-});
-
-// ===== Footer services =====
-document.querySelectorAll('footer a[href^="#service-"]').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    handleServiceClick(this.getAttribute('href'));
-  });
-});
-
-// ===== Shared function =====
-function handleServiceClick(href) {
-  const index = serviceIndex[href];
-  if (index === undefined) return;
-
-  // Move carousel
-  const carousel = document.getElementById('services-carousel');
-  carousel.style.transform = `translateX(-${index * 100}%)`;
-
-  // Wait for carousel transition, then center scroll
-  setTimeout(() => {
-    const target = document.querySelector(href);
-    if (target) {
-      const targetRect = target.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const targetHeight = targetRect.height;
-      const centerOffset = (windowHeight - targetHeight) / 2;
-      const yPosition = targetRect.top + window.pageYOffset - centerOffset;
-
-      window.scrollTo({
-        top: yPosition,
-        behavior: 'smooth'
-      });
-    }
-  }, 300);
-
-  // Reset hash to allow repeated clicks
-  history.replaceState(null, '', ' ');
-  history.pushState(null, '', href);
-}
-
-        </script>
+  
         
 
           <div class="footer-column">
