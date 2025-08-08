@@ -704,6 +704,68 @@ document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
             <li><a href="#service-vfx" class="service-link" data-index="2">VFX & Motion Graphics</a></li>
           </ul>
         </details>
+        <script>
+          // Service ID → Carousel index mapping
+const serviceIndex = {
+  '#service-3d': 0,
+  '#service-web': 1, 
+  '#service-vfx': 2,
+  '#service-2d': 3,
+  '#service-game': 4,
+  '#service-ai': 5
+};
+
+// ===== Navbar services =====
+document.querySelectorAll('nav a[href^="#service-"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    handleServiceClick(this.getAttribute('href'));
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.style.right = "-100%";
+  });
+});
+
+// ===== Footer services =====
+document.querySelectorAll('footer a[href^="#service-"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    handleServiceClick(this.getAttribute('href'));
+  });
+});
+
+// ===== Shared function =====
+function handleServiceClick(href) {
+  const index = serviceIndex[href];
+  if (index === undefined) return;
+
+  // Move carousel
+  const carousel = document.getElementById('services-carousel');
+  carousel.style.transform = `translateX(-${index * 100}%)`;
+
+  // Wait for carousel transition, then center scroll
+  setTimeout(() => {
+    const target = document.querySelector(href);
+    if (target) {
+      const targetRect = target.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const targetHeight = targetRect.height;
+      const centerOffset = (windowHeight - targetHeight) / 2;
+      const yPosition = targetRect.top + window.pageYOffset - centerOffset;
+
+      window.scrollTo({
+        top: yPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, 300);
+
+  // Reset hash to allow repeated clicks
+  history.replaceState(null, '', ' ');
+  history.pushState(null, '', href);
+}
+
+        </script>
         
 
           <div class="footer-column">
